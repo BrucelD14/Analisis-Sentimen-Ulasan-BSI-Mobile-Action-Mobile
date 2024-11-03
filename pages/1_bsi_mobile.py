@@ -15,7 +15,6 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 
-
 nltk.download('punkt')
 nltk.download('stopwords')
 from sklearn.pipeline import Pipeline
@@ -23,12 +22,14 @@ from wordcloud import WordCloud, STOPWORDS
 import re
 import joblib
 
+# MAIN FUNCTION
 def main():
     st.title("BSI Mobile - Analisis Sentimen")
 
     # logo
     st.logo("img/unimal_logo.png") 
 
+    # fitur aplikasi
     st.write("""
     **Features:**
     - Preprocessing Dataset 🧮
@@ -36,8 +37,9 @@ def main():
     - Visualisasi Sentimen 📊
     - Evaluasi Model 📈
     """)
-    # Add more content related to BSI Mobile here
-    # Judul aplikasi
+    
+
+    # form input dataset (CSV)
     st.header("Form Input File CSV")
 
     # Membuat form untuk mengunggah file CSV
@@ -56,7 +58,7 @@ def main():
         # st.write(df.describe())
 
         # PREPROSESING
-        st.header("Cleansing Dataset")
+        st.header("Cleaning Dataset")
         st.subheader("Check data shape & Drop Data Duplicate")
         # Check data shape
         st.write(f"Data has: {df.shape[0]} rows and {df.shape[1]} columns")
@@ -93,20 +95,20 @@ def main():
         df['content'] = df['content'].apply(remove_numbers)
         st.dataframe(df.head())
 
-        st.subheader("Mengubah menjadi lower case")
         # To Lower Case
+        st.subheader("Mengubah menjadi lower case")
         df['content'] = df['content'].str.lower()
         st.dataframe(df.head())
 
-        st.subheader("Filter baris di mana jumlah kata dalam kolom 'content' kurang dari 4")
         # Langkah 3: Filter baris di mana jumlah kata dalam kolom 'content' kurang dari 4
+        st.subheader("Filter baris di mana jumlah kata dalam kolom 'content' kurang dari 4")
         df = df[df['content'].apply(lambda x: len(x.split()) >= 4)]
         st.dataframe(df.head())
 
         st.header("Data Preprosesing")
 
-        st.subheader("Normalisasi Kata")
         # Normalisasi
+        st.subheader("Normalisasi Kata")
         norm = {' gk ' : ' nggak ', ' mmg ' : ' memang ', ' krna ' : ' karena ', ' krn ' : ' karena ',
                 ' no ' : ' nomor ', ' ktp ' : ' kartu tanda penduduk ', ' trus ' : ' terus ',
                 ' yobain ' : ' coba ', ' sya ' : ' saya ', ' doang ' : ' saja ', ' kaga ' : ' nggak ', 
@@ -668,5 +670,5 @@ if __name__ == "__main__":
 # Footer
 st.markdown("""
 ---
-Made with ❤️ in Lhokseumawe by *Mr Mustache* 🥸. All rights reserved.
+Made with ❤️ in Lhokseumawe by *Brucel Duta* 👾. All rights reserved.
 """)

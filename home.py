@@ -1,11 +1,10 @@
+# import package necessary
 import streamlit as st
-# from bsi_mobile import show_bsi_mobile_page
-# from action_mobile import show_action_mobile_page
-# from home import show_home_page
 
 # Set the title of the page
 st.set_page_config(page_title="Web Analisis Sentimen", page_icon="🤖")
 
+# MAIN FUNCTION
 def main():
     # Title of the landing page
     st.title("Analisis Sentimen Ulasan Pengguna Aplikasi BSI Mobile Dan Action Mobile")
@@ -48,7 +47,7 @@ if __name__ == "__main__":
 # Footer
 st.markdown("""
 ---
-Made with ❤️ in Lhokseumawe by *Mr Mustache* 🥸. All rights reserved.
+Made with ❤️ in Lhokseumawe by *Brucel Duta* 👾. All rights reserved.
 """)
 
 
