@@ -1,3 +1,4 @@
+# import library
 import streamlit as st
 import joblib
 
@@ -31,5 +32,5 @@ if __name__ == "__main__":
 # Footer
 st.markdown("""
 ---
-Made with ❤️ in Lhokseumawe by *Mr Mustache* 🥸. All rights reserved.
+Made with ❤️ in Lhokseumawe by *Brucel Duta* 👾. All rights reserved.
 """)
