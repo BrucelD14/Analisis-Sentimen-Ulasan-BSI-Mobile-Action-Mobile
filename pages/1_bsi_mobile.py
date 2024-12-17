@@ -331,45 +331,45 @@ def main():
         # STEMMING DAN TOKENIZING
         st.subheader("Tokenizing dan Stemming")
         # # Initialize stemmer
-        factory = StemmerFactory()
-        stemmer = factory.create_stemmer()
+        # factory = StemmerFactory()
+        # stemmer = factory.create_stemmer()
 
-        # # Define Indonesian stopwords
-        stop_words = set(stopwords.words('indonesian'))
+        # # # Define Indonesian stopwords
+        # stop_words = set(stopwords.words('indonesian'))
 
-        # # Function for preprocessing: tokenizing and stemming
-        def preprocess_review(review):
-            # Tokenize the review
-            tokens = word_tokenize(review)
+        # # # Function for preprocessing: tokenizing and stemming
+        # def preprocess_review(review):
+        #     # Tokenize the review
+        #     tokens = word_tokenize(review)
             
-        #     # Remove stopwords
-            tokens = [word for word in tokens if word.lower() not in stop_words]
+        # #     # Remove stopwords
+        #     tokens = [word for word in tokens if word.lower() not in stop_words]
             
-        #     # Stem the tokens
-            stems = [stemmer.stem(token) for token in tokens]
+        # #     # Stem the tokens
+        #     stems = [stemmer.stem(token) for token in tokens]
             
-            return stems
+        #     return stems
 
-        # # Apply the function to the content column
-        df['tokenized_stemmed'] = df['content_stopwords'].apply(preprocess_review)
+        # # # Apply the function to the content column
+        # df['tokenized_stemmed'] = df['content_stopwords'].apply(preprocess_review)
 
-        # # Function to clean the data
-        def clean_data(tokenized_list):
-            # Convert list to a string, remove commas and brackets, and then convert back to a list of words
-            clean_str = ' '.join(tokenized_list)
-            return clean_str
+        # # # Function to clean the data
+        # def clean_data(tokenized_list):
+        #     # Convert list to a string, remove commas and brackets, and then convert back to a list of words
+        #     clean_str = ' '.join(tokenized_list)
+        #     return clean_str
 
-        # # Apply the function to the 'tokenized_stemmed' column
-        df['cleaned_tokenized_stemmed'] = df['tokenized_stemmed'].apply(clean_data)
+        # # # Apply the function to the 'tokenized_stemmed' column
+        # df['cleaned_tokenized_stemmed'] = df['tokenized_stemmed'].apply(clean_data)
         # END STEMMING DAN TOKENIZING
 
         # Untuk Development, membaca dataset yang telah di preprocessing (dikarenakan proses stemming lama)
-        # df = pd.read_csv("preprocessed/preprocessed_data_bsi.csv")
+        df = pd.read_csv("preprocessed/preprocessed_data_bsi.csv")
 
         st.dataframe(df.head())
 
         # kode untuk mengeksport ke csv
-        df.to_csv('preprocessed/preprocessed_data_bsi.csv', index=False)
+        # df.to_csv('preprocessed/preprocessed_data_bsi.csv', index=False)
 
         st.subheader("Jumlah ulasan dengan sentimen positif dan negatif")
         # jumlah ulasan dengan sentimen positif dan negatif
